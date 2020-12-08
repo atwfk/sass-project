@@ -1,0 +1,347 @@
+$float-left: left
+$float-right: right
+$redColor: #e2494c
+$greyColor: #9c9c9c
+$maxMobile: "(max-width: 767px)"
+$maxSmall: "(max-width: 991px)"
+$minSmall: "(min-width: 768px)"
+$minMedium: "(min-width: 992px)"
+$minLarge: "(min-width: 1200px)"
+$text-right: right
+$text-left: left
+@mixin overlay()
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+
+@mixin prefixer($property, $value, $prefixes: ())
+    @each $prefix in $prefixes
+        #{'-' + $prefix + '-' + $property}: $value
+        #{$property}: $value
+
+*
+    @include prefixer(box-sizing, border-box, webkit moz)
+    
+.container
+    margin: auto
+    padding-left: 15px
+    padding-right: 15px
+    position: relative
+    @media #{$minSmall}
+        width: 750px
+    @media #{$minMedium}
+        width: 970px
+    @media #{$minLarge}
+        width: 1170px        
+
+.clearfix
+    clear: both
+
+.text-center-xs
+    @media #{$maxMobile}
+        text-align: center
+            
+
+nav
+    position: relative
+    padding: 20px 0
+    overflow: hidden
+    border-bottom: 1px solid $greyColor 
+    .logo
+        width: 30%
+        float: $float-left
+        @media #{$minSmall}
+            width: 100%
+            float: none
+            text-align: center
+        @media #{$minMedium}
+            width: 30%
+            float: left
+            text-align: $text-left
+        @media #{$maxMobile}
+            width: 100%
+            float: none    
+        h1
+            margin-top: 10px
+            margin-bottom: 0 
+                
+    .navbar
+        overflow: hidden
+        background-color: $redColor
+        @media #{$minSmall}
+            border-radius: 15px
+            width: 100%
+            float: none
+            margin-top: 30px
+            display: block !important
+        @media #{$minMedium}
+            width: 70%
+            float: $float-left
+            margin-top: 1em
+        @media #{$maxMobile}
+            display: none
+        li
+            float: $float-left
+            font-size: 18px
+            text-align: center
+            @media #{$minSmall}
+                width: 20%
+            @media #{$maxMobile}
+                display: block
+                float: none
+                text-align: left
+                padding-left: 10px 
+
+            a
+                display: block
+                padding: 20px 10px
+                color: #ffffff
+                text-decoration: none
+                &:hover
+                    color: #ddd
+
+.slider
+    blockquote
+        font-size: 20px
+        line-height: 1.7
+        text-align: center
+        font-style: italic
+        color: #5e5e5e
+        font-weight: bold
+        font-family: tahoma, arial
+        width: 80%
+        margin: 30px auto
+    img
+        min-width: 100%
+        max-width: 100%
+    .bullets
+        text-align: center
+        li
+            display: inline-block
+            width: 20px
+            height: 20px
+            background-color: $greyColor
+            border-radius: 50%
+            border: 3px solid $greyColor
+            transition: all 1s ease
+            &.active,
+            &:hover
+                background-color: #fff
+                border: 3px solid #333
+
+.head-with-border
+    position: relative
+    h2
+        background-color: $redColor
+        color: #ffffff
+        text-align: center
+        margin: 40px auto
+        border-radius: 15px
+        width: 400px
+        padding: 10px 15px 
+        text-transform: uppercase
+        @media #{$maxMobile}
+            max-width: 300px
+        &::before
+            content: ""
+            width: 100%
+            height: 1.5px
+            background-color: $greyColor
+            position: absolute
+            left: 0
+            top: 50%
+            z-index: -1
+
+.services
+    .service-box
+        @media #{$minSmall}    
+            float: left
+            width: (100% /3)
+            &:not(:last-of-type)
+                padding-right: 20px
+        @media #{$maxMobile}
+            
+            i
+                display: block
+                margin-bottom: 15px 
+                    
+        h3
+            color: #666
+            i
+                font-size: 35px
+                position: relative
+                top: 4px
+                margin-right: 10px
+        p
+            color: #777
+            line-height: 1.5
+        a
+            color: $redColor
+            text-decoration: none  
+
+.our-players    
+    .player-box
+        @media #{$maxMobile} 
+            margin-bottom: 40px
+        @media #{$minSmall} 
+            float: left
+            width: (100% /2)
+            text-align: center
+            margin-bottom: 40px  
+        @media #{$minMedium} 
+            width: (100% /3)
+            text-align: left
+            margin-bottom: 40px
+            padding-left: 20px
+            padding-right: 20px  
+        @media #{$minLarge} 
+            width: (100% /5) 
+        img
+            max-width: 100%
+        h3
+            color: #666
+            font-weight: normal
+            span
+                font-weight: bold
+        p
+            color: #777
+            line-height: 1.5
+        a
+            color: $redColor
+            text-decoration: none  
+
+.gallery
+    .gallery-box
+        float: left
+        width: (94% /3)
+        &:not(:last-of-type)
+            margin-right: 3%
+        img
+            max-width: 100%
+
+footer
+    background: #e2e2e2
+    padding-top: 30px
+    margin-top: 50px
+    .images 
+        @media #{$minSmall}
+            width: 100%
+            float: left
+        @media #{$minMedium}
+            width: 50%
+        .images-box
+            overflow: hidden
+            margin-bottom: 20px
+            img
+                @media #{$minSmall}
+                    float: left
+                width: 150px
+                height: 150px
+            .text
+                @media #{$minSmall}    
+                    float: left
+                    width: calc( 100% - 180px )
+                    margin-right: 15px
+                    margin-left: 15px
+                h4
+                    color: $redColor
+                    margin: 20px 0 0
+                p
+                    color: #888
+                    line-height: 1.9
+                    margin-top: 8px
+                    
+    .info
+        @media #{$minSmall}
+            width: 50%
+            float: left
+        @media #{$minMedium}
+            width: 25%
+        ul
+            color: #888
+            line-height: 1.8
+            li
+                span
+                    color: $redColor
+        h4  
+            color: #888
+            font-weight: bold
+            margin-bottom: 0px
+        p
+            color: #888     
+            margin-top: 8px 
+    .contact
+        @media #{$minSmall}
+            width: 50%
+            float: left
+        @media #{$minMedium}
+            width: 25%
+        input[type="text"],
+        input[type="email"],
+        textarea 
+            border: 1px solid #c9c9c9
+            padding: 10px
+            margin-bottom: 5px
+            border-radius: 10px
+            width: 100%
+        textarea
+            height: 140px    
+    .section-title
+        color: #444444
+        font-weight: normal
+    .copy-right
+        padding: 25px 0
+        border-top: 1px solid #c5c5c5
+        overflow: hidden
+        color: #888
+        margin-top: 30px
+        .copy-text, 
+        .copy-author
+            @media #{$maxMobile}
+                text-align: center
+            @media #{$minSmall}
+                float: left
+                width: 50%
+        .copy-author
+            @media #{$maxMobile}
+                margin-top: 20px 
+            @media #{$minSmall}
+                text-align: $text-right    
+        
+.main-button
+    background: rgba($redColor, 0.8) 
+    color: #ffffff
+    border: none
+    padding: 10px 15px
+    text-align: center
+    min-width: 120px
+    border-radius: 10px
+    text-transform: uppercase
+    font-weight: bold
+    cursor: pointer
+    @include prefixer(transition, all .8s ease,moz o webkit ms)
+    &:hover
+        background: $redColor
+
+.toggler
+    background: $redColor
+    border: none
+    padding: 8px
+    cursor: pointer
+    position: absolute
+    top: 25px
+    right: 15px
+    display: none
+    outline: none
+    @media #{$maxMobile}
+        display: block
+    span
+        display: block  
+        width: 50px
+        height: 4px
+        background: #ffffff
+        
+        &:not(:last-child)
+            margin-bottom: 5px      
